@@ -1,8 +1,7 @@
 
 ini    = 40000
-chars  = 960
+fin    = 40960
 ptr    = 202
-len    = 204
 
          org $2000
 start   
@@ -11,11 +10,6 @@ start
          lda #>ini
          sta ptr+1
          
-         lda #<chars
-         sta len
-         lda #>chars
-         sta len+1
-
          ldy #0
 
 loop     lda 53770  
@@ -25,15 +19,12 @@ loop     lda 53770
          bne nopage
          inc ptr+1
       
-nopage   dec len
-         lda len
-         ora len+1
-         beq end
-      
-         lda len
-         cmp #$FF
+nopage   lda ptr
+         cmp #<fin
          bne loop
-         dec len+1
-         jmp loop
+         
+         lda ptr+1
+         cmp #>fin
+         bne loop
 
-end      jmp start
+end      jmp end
