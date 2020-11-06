@@ -5,7 +5,7 @@
 
 char a[ROWS][COLS];
 
-int sum_fast() {
+int loop_fast() {
 	int n = 0;
     for(int row=0; row<ROWS; row++) {
         for(int col=0; col<COLS; col++) {
@@ -15,7 +15,7 @@ int sum_fast() {
     return n;
 }
 
-int sum_slow() {
+int loop_slow() {
 	int n = 0;
 	for(int col=0; col<COLS; col++) {
 		for(int row=0; row<ROWS; row++) {
@@ -26,7 +26,7 @@ int sum_slow() {
 }
 
 int main() {
-    int x = sum_slow();
-    int y = sum_fast();
+    int x = loop_slow();
+    int y = loop_fast();
     printf("%d %d\n", a[2][1], x+y);
 }
