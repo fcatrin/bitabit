@@ -1,6 +1,8 @@
 import java.util.List;
 import java.util.ArrayList;
 
+// -Xmx128m
+
 public class TestHeap_01 {
 	static List<int[]> data = new ArrayList<int[]>();
 	
